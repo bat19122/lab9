@@ -1,0 +1,40 @@
+`timescale 1ns/1ps;
+module tb_Ej1A();
+reg D;
+reg clk;
+reg rst;
+reg en;
+wire Q;
+
+Ej1A U1(D,clk,Q,rst,en);
+
+initial begin
+  clk=0;
+     forever #10 clk = ~clk;
+end
+initial begin
+$display("Clk1bit");
+    $display("rst en clk | D Q");
+    $display("------------------------------");
+    $monitor("%b %b %b | %b %b", rst, en, clk, D, Q);
+  end
+ rst=1; en = 0;
+ D <= 0;
+ #100;
+ D <= 1;
+ #100;
+ en = 1;
+ D <= 0;
+ #100;
+ D <= 1;
+ rst=0; en = 0;
+ D <= 0;
+ #100;
+ D <= 1;
+ #100;
+ en = 1;
+ D <= 0;
+ #100;
+ D <= 1;
+end
+endmodule
