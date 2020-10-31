@@ -4,7 +4,7 @@ module TriBuff_tb();
   reg clk;
   reg rst;
   reg [3:0] In;
-  wire Ou;
+  wire [3:0] Ou;
   TriBuff T1(en, clk, rst, In, Ou);
 
   always begin
